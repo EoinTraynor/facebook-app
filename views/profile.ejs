@@ -1,0 +1,82 @@
+<!doctype html>
+<html>
+<head>
+    <title>Node Authentication</title>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+    <style>
+        body        { padding-top:80px; word-wrap:break-word; }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <div class="col-sm-6 col-sm-offset-3">
+        <div class="page-header text-center">
+            <h1> Logged In Using</h1>
+        </div>
+
+        <!-- What authentication process used -->
+        <% if (user.facebook.token) { %>
+                <!-- FACEBOOK INFORMATION -->
+                <div class="well">
+                    <h3 class="text-primary"><span class="fa fa-facebook"></span> Facebook</h3>
+                        <p>
+                            <strong>Name</strong>: <%= user.facebook.name %><br>
+                            <strong>Email</strong>: <%= user.facebook.email %><br>
+                            <strong>ID</strong>: <%= user.facebook.id %><br>
+                            <strong>Access Token</strong>: <%= user.facebook.token %><br>
+                        </p>
+                        <a href="/logout" class="btn btn-primary">Logout</a>
+                </div>
+
+
+        <% } else if (user.twitter.token) { %>
+            <!-- TWITTER INFORMATION -->
+                <div class="well">
+                    <h3 class="text-info"><span class="fa fa-twitter"></span> Twitter</h3>
+                        <p>
+                            <strong>Display name</strong>: <%= user.twitter.displayName %><br>
+                            <strong>Username</strong>: <%= user.twitter.username %><br>
+                            <strong>ID</strong>: <%= user.twitter.id %><br>
+                            <strong>Token</strong>: <%= user.twitter.token %><br>
+                        </p>
+                        <a href="/logout" class="btn btn-info">Logout</a>
+                </div>
+
+
+        <% } else if (user.google.token) { %>
+            <!-- GOOGLE INFORMATION -->
+                <div class="well">
+                    <h3 class="text-danger"><span class="fa fa-google-plus"></span> Google+</h3>
+                        <p>
+                            <strong>Name</strong>: <%= user.google.name %><br>
+                            <strong>Email</strong>: <%= user.google.email %><br>
+                            <strong>ID</strong>: <%= user.google.id %><br>
+                            <strong>Token</strong>: <%= user.google.token %><br>
+                        </p>
+                        <a href="/logout" class="btn btn-danger">Logout</a>
+
+                </div>
+
+        <% } else { %>
+            <!-- LOCAL INFORMATION -->
+
+                <div class="well">
+                    <h3><span class="fa fa-user"></span> Local</h3>
+                        <p>
+                            <strong>Email</strong>: <%= user.local.email %><br>
+                            <strong>ID</strong>: <%= user._id %><br>
+                            <strong>Password</strong>: <%= user.local.password %><br>
+                        </p>
+
+                        <a href="/logout" class="btn btn-default">Logout</a>
+
+                </div>
+
+        <% } %>
+    </div>
+
+</div>
+</body>
+</html>

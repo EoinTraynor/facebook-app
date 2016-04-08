@@ -5,9 +5,12 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
+var passport = require('passport');
+var localStrategy = require('passport-local').Strategy;
+var flash = require('connect-flash');
+var session = require('express-session');
 
 var routes = require('./routes/index');
-var users = require('./routes/users');
 
 var app = express();
 
@@ -26,8 +29,15 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+// passport configuration
+app.use(session({ secret: 'authsecret' }));
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(flash());
+
 app.use('/', routes);
-app.use('/users', users);
+
+require('./config/passport')(passport);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
