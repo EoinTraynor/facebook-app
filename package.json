@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "nodemon ./bin/www"
+    "start": "node ./bin/www"
   },
   "dependencies": {
     "bcrypt-nodejs": "0.0.3",
@@ -13,12 +13,11 @@
     "debug": "~2.2.0",
     "ejs": "~2.3.3",
     "express": "~4.13.1",
-    "express-session": "^1.13.0",
-    "mongoose": "^4.4.12",
+    "express-session": "^1.12.1",
+    "mongoose": "^4.2.6",
     "morgan": "~1.6.1",
     "passport": "^0.3.2",
-    "passport-facebook": "^2.1.0",
-    "passport-local": "^1.0.0",
+    "passport-facebook": "^2.0.0",
     "serve-favicon": "~2.3.0"
   },
   "devDependencies": {
