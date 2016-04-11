@@ -21,10 +21,10 @@ module.exports = function(passport) {
         clientID        : configAuth.facebookAuth.clientID,
         clientSecret    : configAuth.facebookAuth.clientSecret,
         callbackURL     : configAuth.facebookAuth.callbackURL,
-        profileFields: ['id', 'email', 'first_name', 'last_name'],
+        profileFields: ['id', 'email', 'first_name', 'last_name', 'picture.width(1200).height(1200)'],
     },
     function(token, refreshToken, profile, done) {
-
+        console.log(profile);
         process.nextTick(function() {
             // check if user is alreddy registered in DB
             User.findOne({ 'facebook.id': profile.id }, function(err, user) {
@@ -38,6 +38,7 @@ module.exports = function(passport) {
                     newUser.facebook.token = token;
                     newUser.facebook.name = profile.name.givenName + ' ' + profile.name.familyName;
                     newUser.facebook.email = (profile.emails[0].value || '').toLowerCase();
+                    newUser.facebook.photo = profile.photos[0].value;
 
                     newUser.save(function(err) {
                         if (err)
