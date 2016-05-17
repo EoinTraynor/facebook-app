@@ -7,6 +7,7 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
 
+/* GET profile page. */
 router.get('/profile', isLoggedIn, function(req, res) {
   res.render('profile.ejs', { user: req.user });
 });

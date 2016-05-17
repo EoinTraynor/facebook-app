@@ -1,6 +1,7 @@
 var mongoose = require('mongoose');
 var bcrypt   = require('bcrypt-nodejs');
 
+// Define the database model object that will be stored
 var userSchema = mongoose.Schema({
   facebook: {
     id: String,

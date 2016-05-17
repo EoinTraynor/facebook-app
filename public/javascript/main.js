@@ -84,7 +84,7 @@ function draw(ctx, option, profileImage) {
 	ctx.fillStyle = '#f2f2f2';
 	ctx.fillText(option, 35, 680);
 
-	// add party text
+	// add #Vote text
 	ctx.font = '40pt Arial';
 	ctx.strokeStyle = '#f2f2f2';
 	ctx.fillStyle = '#f2f2f2';
