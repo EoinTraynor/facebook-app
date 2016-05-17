@@ -11,7 +11,7 @@ This web application would integrate Facebook’s developer API in order to requ
 ## Run Configuration
 1. Install packages: `npm install`
 2. Change the dbConfig (to your database location) in app.js
-3. Launch the app: `node app.js`
+3. Launch the app: `npm start`
 4. Visit your browser at: `http:localhost:3000`
 
 
